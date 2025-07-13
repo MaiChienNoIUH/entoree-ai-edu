@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toggleFavorite, getFavorites } from "../utils/localStorageUtils";
+import "../css/ProductCard.css"; 
 
 const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
