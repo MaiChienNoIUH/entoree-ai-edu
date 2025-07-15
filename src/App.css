@@ -82,6 +82,7 @@ button:hover {
 
 .app-container {
   padding: 16px;
+  padding-top: 0;
   max-width: 1200px;
   margin: 0 auto;
 }

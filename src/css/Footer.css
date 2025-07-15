@@ -1,0 +1,34 @@
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #212121;
+  margin-top: 2rem;
+  border-top: 1px solid #ccc;
+  color: #ffffff;
+}
+
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.footer-item {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.security-item,
+.policy-item {
+  color: #c2c2c2;
+  text-decoration: none;
+  font-size: 14px;
+}

@@ -8,7 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import mockProducts from "../data/products";
 import SearchFilterBar from "../components/SearchFilterBar";
 import { fetchSuggestions } from "../api/SuggestionApi";
+import { FiChevronDown } from "react-icons/fi";
 import "../css/HomePage.css";
+import banner from "../assets/image/banner.jpg";
+import logo from "../assets/image/logo.png";
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,66 +60,75 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container">
-      <div className="mb-4">
-        <div className="flex justify-between items-center">
-          <button className="ai-button" onClick={handleSuggestion}>
-            Gợi Ý AI
+    <div>
+      <div className="banner-container">
+        <img src={banner} className="banner-image" alt="Banner" />
+        <div className="banner-content">
+          <img src={logo} alt="Logo" className="banner-logo" />
+          <h1>Chào mừng đến với Trung Tâm Ngoại Ngữ</h1>
+          <p>Khám phá các khóa học tiếng Anh phù hợp với mọi trình độ</p>
+          <button className="banner-btn" onClick={handleSuggestion}>
+            Gợi ý khóa học với AI
           </button>
         </div>
+      </div>
 
-        {suggestions.length > 0 && (
-          <div className="mt-4">
-            <h2 className="text-xl font-bold mb-2">Gợi ý Sản phẩm</h2>
-            <ul className="list-disc list-inside">
-              {suggestions.map((item) => (
-                <li key={item.id}>{item.name}</li>
+      <div className="container">
+        <div className="mb-4">
+          {suggestions.length > 0 && (
+            <div className="mt-4">
+              <h2 className="text-xl font-bold mb-2">Gợi ý Sản phẩm</h2>
+              <ul className="list-disc list-inside">
+                {suggestions.map((item) => (
+                  <li key={item.id}>{item.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <h1 className="text-2xl font-bold mb-4">Danh sách Khóa học</h1>
+
+        <SearchFilterBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          filter={filter}
+          setFilter={setFilter}
+        />
+
+        <div className="product-grid">
+          {isLoading
+            ? Array.from({ length: 9 }).map((_, idx) => (
+                <div key={idx}>
+                  <Skeleton height={200} />
+                  <Skeleton height={20} width="80%" />
+                  <Skeleton height={20} width="60%" />
+                </div>
+              ))
+            : filteredProducts.slice(0, visibleCount).map((product) => (
+                <div
+                  key={product.id}
+                  onClick={() => setSelectedProduct(product)}
+                >
+                  <ProductCard product={product} />
+                </div>
               ))}
-            </ul>
+        </div>
+
+        {visibleCount < filteredProducts.length && (
+          <div className="show-more-container">
+            <button onClick={handleShowMore} className="btn-show-more">
+              <FiChevronDown className="icon" />
+              Xem thêm
+            </button>
           </div>
         )}
+
+        <ProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
       </div>
-
-      <h1 className="text-2xl font-bold mb-4">Danh sách Khóa học</h1>
-
-      <SearchFilterBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        filter={filter}
-        setFilter={setFilter}
-      />
-
-      <div className="product-grid">
-        {isLoading
-          ? Array.from({ length: 9 }).map((_, idx) => (
-              <div key={idx}>
-                <Skeleton height={200} />
-                <Skeleton height={20} width="80%" />
-                <Skeleton height={20} width="60%" />
-              </div>
-            ))
-          : filteredProducts.slice(0, visibleCount).map((product) => (
-              <div key={product.id} onClick={() => setSelectedProduct(product)}>
-                <ProductCard product={product} />
-              </div>
-            ))}
-      </div>
-
-      {visibleCount < filteredProducts.length && (
-        <div className="flex justify-center mt-6">
-          <button
-            onClick={handleShowMore}
-            className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
-          >
-            Xem thêm
-          </button>
-        </div>
-      )}
-
-      <ProductModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-      />
     </div>
   );
 };
