@@ -1,24 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import logo from "../assets/image/logo.png";
 import "../css/Header.css";
 
-const Header = () => {
+const Header = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const storedUser = JSON.parse(localStorage.getItem("currentUser"));
-      setCurrentUser(storedUser);
-    };
-    window.addEventListener("storage", handleStorageChange);
-    handleStorageChange();
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
 
   const handleLogin = () => {
     navigate("/login");
@@ -34,6 +19,7 @@ const Header = () => {
     <header className="navbar-container">
       <nav className="navbar">
         <div className="nav-left">
+          <img src={logo} alt="Logo" className="banner-logo" />
           <NavLink to="/" className="nav-link" activeclassname="active">
             Trang Chủ
           </NavLink>

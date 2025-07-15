@@ -13,7 +13,7 @@ import "../css/HomePage.css";
 import banner from "../assets/image/banner.jpg";
 import logo from "../assets/image/logo.png";
 
-const HomePage = () => {
+const HomePage = ({ currentUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [products] = useState(mockProducts);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -106,12 +106,12 @@ const HomePage = () => {
                 </div>
               ))
             : filteredProducts.slice(0, visibleCount).map((product) => (
-                <div
+                <ProductCard
                   key={product.id}
-                  onClick={() => setSelectedProduct(product)}
-                >
-                  <ProductCard product={product} />
-                </div>
+                  product={product}
+                  currentUser={currentUser}
+                  onOpenModal={() => setSelectedProduct(product)}
+                />
               ))}
         </div>
 

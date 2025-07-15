@@ -1,23 +1,27 @@
-const FAVORITES_KEY = 'favorites';
-
-export const getFavorites = () => {
-  const stored = localStorage.getItem(FAVORITES_KEY);
+// Lấy danh sách yêu thích của một user
+export const getFavorites = (userId) => {
+  const stored = localStorage.getItem(`favorites_${userId}`);
   return stored ? JSON.parse(stored) : [];
 };
 
-export const saveFavorites = (favorites) => {
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+// Lưu danh sách yêu thích của một user
+export const saveFavorites = (userId, favorites) => {
+  localStorage.setItem(`favorites_${userId}`, JSON.stringify(favorites));
 };
 
-export const toggleFavorite = (product) => {
-  const favorites = getFavorites();
+// Thêm hoặc xóa sản phẩm yêu thích
+export const toggleFavorite = (userId, product) => {
+  const favorites = getFavorites(userId);
   const exists = favorites.find((item) => item.id === product.id);
   let updatedFavorites;
+
   if (exists) {
     updatedFavorites = favorites.filter((item) => item.id !== product.id);
   } else {
     updatedFavorites = [...favorites, product];
   }
-  saveFavorites(updatedFavorites);
+
+  saveFavorites(userId, updatedFavorites);
   return updatedFavorites;
 };
+

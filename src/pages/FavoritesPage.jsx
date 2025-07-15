@@ -1,14 +1,22 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { getFavorites } from "../utils/localStorageUtils";
+import ProductModal from "../components/ProductCardModal";
 
-const FavoritesPage = () => {
+const FavoritesPage = ({ currentUser }) => {
   const [favorites, setFavorites] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
-    const favs = getFavorites();
-    setFavorites(favs);
-  }, []);
+    if (currentUser) {
+      const favs = getFavorites(currentUser.id);
+      setFavorites(favs);
+    }
+  }, [currentUser]);
+
+  if (!currentUser) {
+    return <p>Vui lòng đăng nhập để xem sản phẩm yêu thích.</p>;
+  }
 
   return (
     <div className="container">
@@ -18,10 +26,19 @@ const FavoritesPage = () => {
       ) : (
         <div className="product-grid">
           {favorites.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              currentUser={currentUser}
+              onOpenModal={() => setSelectedProduct(product)}
+            />
           ))}
         </div>
       )}
+      <ProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
     </div>
   );
 };

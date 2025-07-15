@@ -46,10 +46,17 @@
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .favorite-btn:hover {
   transform: scale(1.2);
+  background-color: #139a32;
 }
 
 .favorite-btn.favorited {

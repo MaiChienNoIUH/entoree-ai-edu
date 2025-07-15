@@ -20,6 +20,14 @@
   gap: 24px;
 }
 
+.banner-logo {
+  width: 150px;
+  height: 55px;
+  object-fit: cover;
+  margin:-14px -24px;
+  margin-right: -12px;
+}
+
 .nav-link {
   text-decoration: none;
   color: #0d1c31;
@@ -144,7 +152,7 @@
   cursor: pointer;
   text-align: left;
   font-size: 14px;
-  color: #333; 
+  color: #333;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -163,4 +171,3 @@
     transform: translateY(0);
   }
 }
-

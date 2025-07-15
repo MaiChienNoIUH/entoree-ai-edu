@@ -1,4 +1,3 @@
-// const defaultAvatar = "https://i.pravatar.cc/150?img=3"; 
 import defaultAvatar from "../assets/image/avatar.jpg";
 
 const users = [

@@ -17,7 +17,9 @@ const LoginPage = () => {
     );
     if (matchedUser) {
       localStorage.setItem("currentUser", JSON.stringify(matchedUser));
-      toast.info(`Chào mừng ${matchedUser.name} login.`);
+      toast.info(`Chào mừng ${matchedUser.name} login.`,{
+        position: "top-right",
+      });
       window.dispatchEvent(new Event("storage"));
       navigate("/");
     } else {

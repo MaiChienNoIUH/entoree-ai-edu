@@ -1,19 +1,36 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toggleFavorite, getFavorites } from "../utils/localStorageUtils";
-import "../css/ProductCard.css"; 
+import "../css/ProductCard.css";
+import { toast } from "react-toastify";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, currentUser, onOpenModal }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const favorites = getFavorites();
-    setIsFavorite(favorites.some((item) => item.id === product.id));
-  }, [product.id]);
+    if (currentUser) {
+      const favorites = getFavorites(currentUser.id);
+      setIsFavorite(favorites.some((item) => item.id === product.id));
+    }
+  }, [product.id, currentUser]);
 
   const handleToggleFavorite = () => {
-    const updatedFavorites = toggleFavorite(product);
+    if (!currentUser) {
+      toast.warning("Vui lòng đăng nhập để thêm sản phẩm yêu thích!", {
+        position: "top-right",
+      });
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 2000);
+      return;
+    }
+    const updatedFavorites = toggleFavorite(currentUser.id, product);
     setIsFavorite(updatedFavorites.some((item) => item.id === product.id));
+    toast.success(
+      isFavorite
+        ? "Đã xóa khỏi danh sách yêu thích"
+        : "Đã thêm vào danh sách yêu thích",
+      { position: "top-right" }
+    );
   };
 
   return (
@@ -30,9 +47,9 @@ const ProductCard = ({ product }) => {
         >
           {isFavorite ? "❤️" : "🤍"}
         </button>
-        <Link to={`/product/${product.id}`} className="details-link">
+        <button onClick={onOpenModal} className="details-link">
           Xem chi tiết
-        </Link>
+        </button>
       </div>
     </div>
   );
