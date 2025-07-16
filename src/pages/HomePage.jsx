@@ -12,7 +12,7 @@ import { FiChevronDown } from "react-icons/fi";
 import "../css/HomePage.css";
 import banner from "../assets/image/banner.jpg";
 import logo from "../assets/image/logo.png";
-import Chatbot from "../components/Chatbot";
+import Chatbot from "../components/Chatbot.jsx";
 import { FaRobot } from "react-icons/fa";
 
 const HomePage = ({ currentUser }) => {
