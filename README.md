@@ -74,6 +74,7 @@ Giao diện hiện đại, **responsive trên mọi thiết bị**, trải nghi�
 ### **Front-end**
 - **React + Vite** (SPA)
 - **React Router**
+- **HTML/CSS**
 - **TailwindCSS** (UI hiện đại)
 - **Axios** (mock API)
 - **React Toastify** (thông báo UX tốt)
