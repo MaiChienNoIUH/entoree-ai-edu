@@ -7,7 +7,7 @@ import {
 import "../css/ProductCard.css";
 import { toast } from "react-toastify";
 
-const ProductCard = ({ product, currentUser, onOpenModal }) => {
+const ProductCard = ({ product, currentUser, onOpenModal, onFavoriteChange }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -27,14 +27,20 @@ const ProductCard = ({ product, currentUser, onOpenModal }) => {
       }, 2000);
       return;
     }
+
     const updatedFavorites = toggleFavorite(currentUser.id, product);
     setIsFavorite(updatedFavorites.some((item) => item.id === product.id));
+
     toast.success(
       isFavorite
         ? "Đã xóa khỏi danh sách yêu thích"
         : "Đã thêm vào danh sách yêu thích",
       { position: "top-right" }
     );
+
+    if (onFavoriteChange) {
+      onFavoriteChange();
+    }
   };
 
   return (

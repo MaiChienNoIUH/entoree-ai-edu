@@ -58,7 +58,7 @@ const HomePage = ({ currentUser }) => {
       }
 
       setSuggestions(res);
-      toast.success("Đã có gợi ý sản phẩm!");
+      toast.success("Đã có gợi ý sản phẩm!", { autoClose: 1000 });
     } catch (error) {
       console.error(error);
       toast.error("Không thể lấy gợi ý lúc này");
