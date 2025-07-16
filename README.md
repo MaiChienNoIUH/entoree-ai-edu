@@ -28,14 +28,17 @@ Giao diện hiện đại, **responsive trên mọi thiết bị**, trải nghi�
 👉 **[https://entoree-ai-edu-lx3w.vercel.app](https://entoree-ai-edu-lx3w.vercel.app)**
 
 ### ✅ **2. Back-end (Chatbot AI)**
-👉 **[https://antoree-chatbot-backend.flo.io](https://antoree-chatbot-backend.flo.io)**
+👉 **[https://antoree-chatbot-backend-r5ipog.fly.dev](https://antoree-chatbot-backend-r5ipog.fly.dev)**
 
 ### ✅ **3. Video Demo**
-👉 **[Xem video demo](https://drive.google.com/...)** *(thay link Google Drive/YouTube)*
+👉 **[Xem video demo](https://drive.google.com/file/d/1HvNO_MxIo342UZNFLWbVbYFj4pnDifaj/view?usp=sharing)**
 
 ---
 
 ## 🖼️ Hình minh hoạ
+
+### **Users Data**
+![Trang chủ](docs/images/project-and-dataa.png)
 
 ### **Trang chủ**
 ![Trang chủ](docs/images/home-page.png)
@@ -88,11 +91,12 @@ Hiệu ứng hover & transition mượt mà.
 
 ---
 
-## 🔧 Cách chạy dự án
+## 🔧 Cách chạy dự án local
 
 ### **1. Front-end (React)**
+npm run dev
 
-#### Clone & cài đặt
+#### Clone & cài đặt local
 ```bash
 git clone https://github.com/MaiChienNoIUH/entoree-ai-edu.git
 cd entoree-ai-edu
