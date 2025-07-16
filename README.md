@@ -27,6 +27,12 @@ Giao diện hiện đại, **responsive trên mọi thiết bị**, trải nghi�
 ### ✅ **1. Front-end (FE)**
 👉 **[https://entoree-ai-edu-lx3w.vercel.app](https://entoree-ai-edu-lx3w.vercel.app)**
 
+Tài khoản 1: email: nomai6789@gmail.com; password: 123456
+Tài khoản 2: email: user2@example.com; password: 123456
+Tài khoản 3: email: user3@example.com; password: 123456
+Tài khoản 4: email: user4@example.com; password: 123123
+Tài khoản 5: email: user5@example.com; password: user@2025
+
 ### ✅ **2. Back-end (Chatbot AI)**
 👉 **[https://antoree-chatbot-backend-r5ipog.fly.dev](https://antoree-chatbot-backend-r5ipog.fly.dev)**
 
