@@ -1,12 +1,99 @@
-# React + Vite
+# 🏫 Sàn Giáo Dục Thương Mại Điện Tử Tích Hợp AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Vercel Deployment](https://img.shields.io/badge/deploy-Vercel-success?logo=vercel&style=flat-square)
+![React](https://img.shields.io/badge/React-v18-blue?logo=react&style=flat-square)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.4-38bdf8?logo=tailwindcss&style=flat-square)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?logo=springboot&style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Giới thiệu
 
-## Expanding the ESLint configuration
+Đây là dự án **Front-end mô phỏng sàn giáo dục thương mại điện tử tích hợp AI**, nơi người dùng có thể:  
+✅ Tìm kiếm & lọc sản phẩm  
+✅ Xem chi tiết qua modal trực quan  
+✅ Thêm sản phẩm vào danh sách yêu thích  
+✅ Nhận **gợi ý thông minh (AI)** dựa trên hành vi người dùng  
+✅ **Lịch sử xem** sản phẩm đã từng click  
+✅ Trò chuyện với **Chatbot AI** để được tư vấn sản phẩm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Giao diện hiện đại, **responsive trên mọi thiết bị**, trải nghiệm mượt mà.
+
+---
+
+## 🚀 Demo
+
+### ✅ **1. Front-end (FE)**
+👉 **[https://entoree-ai-edu-lx3w.vercel.app](https://entoree-ai-edu-lx3w.vercel.app)**
+
+### ✅ **2. Back-end (Chatbot AI)**
+👉 **[https://antoree-chatbot-backend.flo.io](https://antoree-chatbot-backend.flo.io)**
+
+### ✅ **3. Video Demo**
+👉 **[Xem video demo](https://drive.google.com/...)** *(thay link Google Drive/YouTube)*
+
+---
+
+## 🖼️ Hình minh hoạ
+
+### **Trang chủ**
+![Trang chủ](docs/images/home-page.png)
+
+### **Modal chi tiết sản phẩm**
+![Modal sản phẩm](docs/images/product-modal.png)
+
+### **Danh sách yêu thích**
+![Yêu thích](docs/images/favorites.png)
+
+### **Lịch sử xem**
+![Lịch sử xem](docs/images/view-history.png)
+
+### **Chatbot AI**
+![Chatbot AI](docs/images/chatbot.png)
+
+---
+
+## 🎯 Chức năng chính
+
+✔ **Danh sách sản phẩm**: tên, giá, ảnh, mô tả ngắn, nút "Xem chi tiết"  
+✔ **Tìm kiếm & lọc sản phẩm** theo tên, giá  
+✔ **Gợi ý thông minh (AI)** dựa trên hành vi người dùng  
+✔ **Quản lý yêu thích**: thêm/xóa, danh sách yêu thích riêng  
+✔ **Lịch sử xem**: hiển thị danh sách sản phẩm đã click  
+✔ **Chatbot AI tư vấn sản phẩm** *(Bonus)*  
+✔ **Loading skeleton** & xử lý lỗi API  
+
+---
+
+## 🧩 Công nghệ
+
+### **Front-end**
+- **React + Vite** (SPA)
+- **React Router**
+- **TailwindCSS** (UI hiện đại)
+- **Axios** (mock API)
+- **React Toastify** (thông báo UX tốt)
+- **LocalStorage** (lưu danh sách yêu thích & lịch sử xem)
+
+### **Back-end**
+- **Spring Boot + WebClient** (gọi OpenAI API)
+- **Flo.io** (deploy backend miễn phí)
+
+---
+
+## 📱 Responsive
+UI tương thích: **Desktop | Tablet | Mobile**  
+Hiệu ứng hover & transition mượt mà.
+
+---
+
+## 🔧 Cách chạy dự án
+
+### **1. Front-end (React)**
+
+#### Clone & cài đặt
+```bash
+git clone https://github.com/MaiChienNoIUH/entoree-ai-edu.git
+cd entoree-ai-edu
+npm install
