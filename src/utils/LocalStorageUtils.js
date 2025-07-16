@@ -1,4 +1,4 @@
-// Lấy danh sách yêu thích của một user
+// ========== YÊU THÍCH ==========
 export const getFavorites = (userId) => {
   const stored = localStorage.getItem(`favorites_${userId}`);
   return stored ? JSON.parse(stored) : [];
@@ -23,5 +23,34 @@ export const toggleFavorite = (userId, product) => {
 
   saveFavorites(userId, updatedFavorites);
   return updatedFavorites;
+};
+
+
+// ========== LỊCH SỬ XEM THEO USER ==========
+export const getViewedProducts = (userId) => {
+  const viewed = localStorage.getItem(`viewedProducts_${userId}`);
+  return viewed ? JSON.parse(viewed) : [];
+};
+
+export const addViewedProduct = (userId, product) => {
+  if (!userId) return;
+
+  const viewed = getViewedProducts(userId);
+  const exists = viewed.find((item) => item.id === product.id);
+
+  if (!exists) {
+    viewed.unshift(product);
+    if (viewed.length > 30) viewed.pop();
+    localStorage.setItem(`viewedProducts_${userId}`, JSON.stringify(viewed));
+  }
+};
+
+export const clearViewedProducts = (userId) => {
+  localStorage.removeItem(`viewedProducts_${userId}`);
+};
+
+export const removeViewedProduct = (userId, productId) => {
+  const viewed = getViewedProducts(userId).filter((p) => p.id !== productId);
+  localStorage.setItem(`viewedProducts_${userId}`, JSON.stringify(viewed));
 };
 

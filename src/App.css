@@ -8,6 +8,7 @@ body {
 .container {
   max-width: 960px;
   margin: 0 auto;
+  margin-top: 20px;
   padding: 16px;
 }
 
@@ -62,10 +63,7 @@ nav a:hover {
 
 .modal-content {
   background: #fff;
-  padding: 24px;
   border-radius: 8px;
-  max-width: 600px;
-  margin: 80px auto;
 }
 
 button {

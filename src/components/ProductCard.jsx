@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { toggleFavorite, getFavorites } from "../utils/localStorageUtils";
+import {
+  toggleFavorite,
+  getFavorites,
+  addViewedProduct,
+} from "../utils/LocalStorageUtils";
 import "../css/ProductCard.css";
 import { toast } from "react-toastify";
 
@@ -47,7 +51,14 @@ const ProductCard = ({ product, currentUser, onOpenModal }) => {
         >
           {isFavorite ? "❤️" : "🤍"}
         </button>
-        <button onClick={onOpenModal} className="details-link">
+        <button
+          onClick={() => {
+            // addViewedProduct(product);
+            if (currentUser) addViewedProduct(currentUser.id, product);
+            onOpenModal();
+          }}
+          className="details-link"
+        >
           Xem chi tiết
         </button>
       </div>

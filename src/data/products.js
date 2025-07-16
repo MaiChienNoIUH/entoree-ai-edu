@@ -61,11 +61,11 @@ const mockProducts = [
   },
   {
     id: 7,
-    name: "Khoá Luyện Nghe Tiếng Anh",
+    name: "Khoá Luyện Nghe Tiếng Anh nâng cao",
     price: 500000,
     image:
       "https://img.freepik.com/free-photo/young-woman-headphones_23-2148864514.jpg",
-    shortDesc: "Khóa học luyện nghe tiếng Anh hiệu quả",
+    shortDesc: "Khóa học luyện nghe tiếng Anh hiệu quả trong các bài thi thực tế",
     longDesc:
       "Khóa học luyện nghe thông qua các video hội thoại thực tế, audio chuyên đề và bài kiểm tra kỹ năng. Giúp học viên cải thiện khả năng nghe hiểu và tăng tốc độ phản xạ với tiếng Anh.",
   },
@@ -95,7 +95,7 @@ const mockProducts = [
     price: 800000,
     image:
       "https://img.freepik.com/free-vector/flat-english-conversation-illustration_23-2149486484.jpg",
-    shortDesc: "Khóa học giao tiếp tiếng Anh thực tiễn",
+    shortDesc: "Khóa học giao tiếp tiếng Anh thực tiễn dành cho người đi làm",
     longDesc:
       "Khóa học giúp nâng cao giao tiếp qua tình huống thực tế. Học viên luyện phản xạ, thảo luận nhóm và role‑play để tăng tự tin khi nói.",
   },

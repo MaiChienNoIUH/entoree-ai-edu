@@ -1,4 +1,3 @@
-// src/api/suggestionApi.js
 export const fetchSuggestions = (userId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
