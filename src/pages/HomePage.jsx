@@ -15,6 +15,7 @@ import logo from "../assets/image/logo.png";
 
 const HomePage = ({ currentUser }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
   const [products] = useState(mockProducts);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,13 +46,24 @@ const HomePage = ({ currentUser }) => {
   });
 
   const handleSuggestion = async () => {
-    toast.info("Đang lấy gợi ý sản phẩm...");
+    setLoadingSuggestions(true);
+    setSuggestions([]);
     try {
-      const res = await fetchSuggestions("demoUser");
+      const res = await fetchSuggestions(currentUser?.id);
+
+      if (res.length === 0) {
+        toast.warn("Không có gợi ý nào cho bạn lúc này");
+        setLoadingSuggestions(false);
+        return;
+      }
+
       setSuggestions(res);
       toast.success("Đã có gợi ý sản phẩm!");
     } catch (error) {
+      console.error(error);
       toast.error("Không thể lấy gợi ý lúc này");
+    } finally {
+      setLoadingSuggestions(false);
     }
   };
 
@@ -74,18 +86,43 @@ const HomePage = ({ currentUser }) => {
       </div>
 
       <div className="container">
-        <div className="mb-4">
-          {suggestions.length > 0 && (
-            <div className="mt-4">
-              <h2 className="text-xl font-bold mb-2">Gợi ý Sản phẩm</h2>
-              <ul className="list-disc list-inside">
-                {suggestions.map((item) => (
-                  <li key={item.id}>{item.name}</li>
-                ))}
-              </ul>
+        {(loadingSuggestions || suggestions.length > 0) && (
+          <div
+            className="p-4 rounded-md mb-6"
+            style={{
+              backgroundColor: "#f9fafb",
+              marginBottom: "20px",
+              paddingBottom: "40px",
+            }}
+          >
+            <h2 className="text-xl font-bold mb-4 text-blue-600">
+              🎯 Gợi ý khóa học cho bạn
+            </h2>
+
+            <div className="product-grid">
+              {loadingSuggestions
+                ? Array.from({ length: 3 }).map((_, idx) => (
+                    <div key={idx}>
+                      <Skeleton height={200} />
+                      <Skeleton
+                        height={20}
+                        width="80%"
+                        style={{ marginTop: "8px" }}
+                      />
+                      <Skeleton height={20} width="60%" />
+                    </div>
+                  ))
+                : suggestions.map((item) => (
+                    <ProductCard
+                      key={item.id}
+                      product={item}
+                      currentUser={currentUser}
+                      onOpenModal={() => setSelectedProduct(item)}
+                    />
+                  ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         <h1 className="text-2xl font-bold mb-4">Danh sách Khóa học</h1>
 
@@ -105,14 +142,16 @@ const HomePage = ({ currentUser }) => {
                   <Skeleton height={20} width="60%" />
                 </div>
               ))
-            : filteredProducts.slice(0, visibleCount).map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  currentUser={currentUser}
-                  onOpenModal={() => setSelectedProduct(product)}
-                />
-              ))}
+            : filteredProducts
+                .slice(0, visibleCount)
+                .map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    currentUser={currentUser}
+                    onOpenModal={() => setSelectedProduct(product)}
+                  />
+                ))}
         </div>
 
         {visibleCount < filteredProducts.length && (
