@@ -38,7 +38,7 @@ Giao diện hiện đại, **responsive trên mọi thiết bị**, trải nghi�
 ## 🖼️ Hình minh hoạ
 
 ### **Users Data**
-![Demo Data](docs/images/project-and-dataa.png)
+![Demo Data](docs/images/project-and-data.png)
 
 ### **Trang chủ**
 ![Trang chủ](docs/images/home-page.png)
