@@ -6,8 +6,15 @@ import {
 } from "../utils/LocalStorageUtils";
 import "../css/ProductCard.css";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ product, currentUser, onOpenModal, onFavoriteChange }) => {
+const ProductCard = ({
+  product,
+  currentUser,
+  onOpenModal,
+  onFavoriteChange,
+}) => {
+  const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -23,7 +30,7 @@ const ProductCard = ({ product, currentUser, onOpenModal, onFavoriteChange }) =>
         position: "top-right",
       });
       setTimeout(() => {
-        window.location.href = "/login";
+        navigate("/login");
       }, 2000);
       return;
     }
