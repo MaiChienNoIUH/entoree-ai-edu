@@ -12,6 +12,8 @@ import { FiChevronDown } from "react-icons/fi";
 import "../css/HomePage.css";
 import banner from "../assets/image/banner.jpg";
 import logo from "../assets/image/logo.png";
+import Chatbot from "../components/Chatbot";
+import { FaRobot } from "react-icons/fa";
 
 const HomePage = ({ currentUser }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,6 +24,7 @@ const HomePage = ({ currentUser }) => {
   const [filter, setFilter] = useState("all");
   const [suggestions, setSuggestions] = useState([]);
   const [visibleCount, setVisibleCount] = useState(9);
+  const [showChatbot, setShowChatbot] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -168,6 +171,18 @@ const HomePage = ({ currentUser }) => {
           onClose={() => setSelectedProduct(null)}
         />
       </div>
+      <div
+        className="chatbot-icon"
+        onClick={() => setShowChatbot((prev) => !prev)}
+      >
+        <FaRobot size={28} />
+      </div>
+
+      {showChatbot && (
+        <div className="chatbot-box">
+          <Chatbot />
+        </div>
+      )}
     </div>
   );
 };
