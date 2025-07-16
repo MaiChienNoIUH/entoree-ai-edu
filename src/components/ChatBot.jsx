@@ -16,7 +16,7 @@ export default function Chatbot() {
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      const res = await axios.post("http://localhost:8080/api/chatbot", {
+      const res = await axios.post("https://antoree-chatbot-backend-r5ipog.fly.dev/api/chatbot", {
         message: input,
       });
       const botMessage = { from: "bot", text: res.data.reply };
